@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.toolbox.module3.Module3Controller"
+      styleClass="module-placeholder"
+      alignment="CENTER" spacing="12">
+
+    <Label text="Module 3" styleClass="module-title" />
+    <Label text="Nathan" styleClass="module-subtitle" />
+
+</VBox>

@@ -1,0 +1,74 @@
+/* ===== Global ===== */
+.root-pane {
+    -fx-background-color: #1a1a2e;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    -fx-background-color: #16213e;
+    -fx-padding: 20 12 20 12;
+    -fx-pref-width: 200px;
+    -fx-min-width: 180px;
+    -fx-border-color: #6B21A8;
+    -fx-border-width: 0 2 0 0;
+}
+
+.sidebar-title {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+    -fx-padding: 0 0 16 4;
+}
+
+/* ===== Nav buttons ===== */
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #94a3b8;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 10 12 10 12;
+    -fx-cursor: hand;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+.nav-btn:hover {
+    -fx-background-color: #2d1b69;
+    -fx-text-fill: #e2e8f0;
+}
+
+.nav-active {
+    -fx-background-color: #6B21A8;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+.nav-active:hover {
+    -fx-background-color: #7c3aed;
+    -fx-text-fill: #ffffff;
+}
+
+/* ===== Content area ===== */
+.content-area {
+    -fx-background-color: #0f0f1a;
+    -fx-padding: 24;
+}
+
+/* ===== Module placeholder ===== */
+.module-placeholder {
+    -fx-background-color: #1e1e3a;
+    -fx-background-radius: 10;
+    -fx-padding: 40;
+}
+
+.module-title {
+    -fx-text-fill: #e2e8f0;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.module-subtitle {
+    -fx-text-fill: #6B21A8;
+    -fx-font-size: 14px;
+}

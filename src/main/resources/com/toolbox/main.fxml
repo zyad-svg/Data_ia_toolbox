@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toolbox.MainController"
+            styleClass="root-pane">
+
+    <!-- Sidebar gauche -->
+    <left>
+        <VBox styleClass="sidebar" spacing="4">
+            <Label text="Data &amp; IA Toolbox" styleClass="sidebar-title" />
+
+            <Button fx:id="btn1" text="Module 1" styleClass="nav-btn" maxWidth="Infinity"
+                    onAction="#onModule1" />
+            <Button fx:id="btn2" text="Module 2" styleClass="nav-btn" maxWidth="Infinity"
+                    onAction="#onModule2" />
+            <Button fx:id="btn3" text="Module 3" styleClass="nav-btn" maxWidth="Infinity"
+                    onAction="#onModule3" />
+            <Button fx:id="btn4" text="Module 4" styleClass="nav-btn" maxWidth="Infinity"
+                    onAction="#onModule4" />
+            <Button fx:id="btn5" text="Module 5" styleClass="nav-btn" maxWidth="Infinity"
+                    onAction="#onModule5" />
+            <Button fx:id="btn6" text="Module 6" styleClass="nav-btn" maxWidth="Infinity"
+                    onAction="#onModule6" />
+        </VBox>
+    </left>
+
+    <!-- Zone centrale -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area" />
+    </center>
+
+</BorderPane>
