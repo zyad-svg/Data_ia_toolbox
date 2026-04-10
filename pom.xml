@@ -16,7 +16,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <javafx.version>17.0.6</javafx.version>
+        <javafx.version>21.0.5</javafx.version>
     </properties>
 
     <dependencies>
@@ -49,6 +49,11 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.toolbox.Main</mainClass>
+                    <options>
+                        <option>--add-modules=javafx.controls,javafx.fxml</option>
+                        <option>--enable-native-access=javafx.graphics</option>
+                        <option>--enable-native-access=javafx.base</option>
+                    </options>
                 </configuration>
             </plugin>
 
