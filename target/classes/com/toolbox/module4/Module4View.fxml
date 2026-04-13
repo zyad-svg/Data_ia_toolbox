@@ -1,15 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.toolbox.module4.Module4Controller"
-      styleClass="module-placeholder"
-      alignment="CENTER" spacing="12">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toolbox.module4.Module4Controller"
+            styleClass="root-bg">
 
-    <Label text="Module 4" styleClass="module-title" />
-    <Label text="Nathan" styleClass="module-subtitle" />
+    <stylesheets>
+        <String fx:value="/com/toolbox/module4/module4.css"/>
+    </stylesheets>
 
-</VBox>
+    <top>
+        <VBox spacing="4">
+            <padding><Insets top="24" right="24" bottom="16" left="24"/></padding>
+            <Label text="Support Client" styleClass="page-title"/>
+            <Label text="Assistant virtuel intelligent" styleClass="section-title"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox styleClass="card">
+            <BorderPane.margin><Insets top="0" right="24" bottom="0" left="24"/></BorderPane.margin>
+            <ScrollPane fx:id="chatScrollPane"
+                        styleClass="chat-scroll"
+                        fitToWidth="true"
+                        VBox.vgrow="ALWAYS">
+                <VBox fx:id="messagesContainer" spacing="12">
+                    <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
+                </VBox>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <VBox spacing="10">
+            <padding><Insets top="16" right="24" bottom="24" left="24"/></padding>
+            <HBox spacing="10">
+                <TextField fx:id="messageInput"
+                           styleClass="input-field"
+                           promptText="Écrivez votre message..."
+                           HBox.hgrow="ALWAYS"
+                           onAction="#sendMessage"/>
+                <Button text="Envoyer" styleClass="primary-button" onAction="#sendMessage"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Effacer la conversation" styleClass="secondary-button" onAction="#clearConversation"/>
+                <Button text="Questions sans réponse"  styleClass="secondary-button" onAction="#showUnanswered"/>
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>

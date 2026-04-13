@@ -2,8 +2,11 @@ package com.toolbox;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,8 +26,19 @@ public class MainController {
     @FXML
     public void initialize() {
         navButtons = List.of(btn1, btn2, btn3, btn4, btn5, btn6);
-        loadModule(1);
-        setActive(btn1);
+        showWelcome();
+    }
+
+    private void showWelcome() {
+        Label title = new Label("Bienvenue dans la Data & IA Toolbox");
+        title.setStyle("-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;");
+
+        Label subtitle = new Label("Sélectionnez un module dans le menu");
+        subtitle.setStyle("-fx-font-size: 14px; -fx-text-fill: #7f8c8d;");
+
+        VBox welcome = new VBox(12, title, subtitle);
+        welcome.setAlignment(Pos.CENTER);
+        contentArea.getChildren().setAll(welcome);
     }
 
     @FXML private void onModule1() { loadModule(1); setActive(btn1); }

@@ -1,15 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.toolbox.module3.Module3Controller"
-      styleClass="module-placeholder"
-      alignment="CENTER" spacing="12">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toolbox.module3.Module3Controller"
+            styleClass="root-bg">
 
-    <Label text="Module 3" styleClass="module-title" />
-    <Label text="Nathan" styleClass="module-subtitle" />
+    <stylesheets>
+        <String fx:value="/com/toolbox/module3/module3.css"/>
+    </stylesheets>
 
-</VBox>
+    <!-- En-tête -->
+    <top>
+        <VBox spacing="4">
+            <padding><Insets top="24" right="24" bottom="16" left="24"/></padding>
+            <Label text="Recommandation de Films" styleClass="page-title"/>
+            <Label text="Importez un CSV et explorez les similarités" styleClass="page-subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- Contenu scrollable -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="20">
+                <padding><Insets top="0" right="24" bottom="24" left="24"/></padding>
+
+                <!-- Carte 1 : Import CSV -->
+                <VBox styleClass="card" spacing="12">
+                    <Label text="Import de données" styleClass="section-title"/>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Button text="Charger un fichier CSV"
+                                styleClass="primary-button"
+                                onAction="#loadCsv"/>
+                        <Label fx:id="importStatus" text=""
+                               style="-fx-text-fill: #6B7280; -fx-font-size: 13px;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Carte 2 : Recherche + filtre genre -->
+                <VBox styleClass="card" spacing="10">
+                    <Label text="Filtres" styleClass="section-title"/>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <!-- Champ recherche avec icône loupe -->
+                        <HBox styleClass="search-container" alignment="CENTER_LEFT" spacing="8" HBox.hgrow="ALWAYS">
+                            <Label text="&#128269;" styleClass="search-icon"/>
+                            <TextField fx:id="searchField"
+                                       styleClass="search-input"
+                                       promptText="Rechercher un film..."
+                                       HBox.hgrow="ALWAYS"/>
+                        </HBox>
+                        <ComboBox fx:id="genreFilter"
+                                  styleClass="combo-field"
+                                  prefWidth="210"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Carte 3 : TableView films -->
+                <VBox styleClass="card" spacing="12">
+                    <Label text="Films disponibles" styleClass="section-title"/>
+                    <TableView fx:id="moviesTable"
+                               styleClass="data-table"
+                               minHeight="350"
+                               maxHeight="420">
+                        <columns>
+                            <TableColumn fx:id="colTitle"  text="TITRE"  prefWidth="300"/>
+                            <TableColumn fx:id="colGenres" text="GENRES" prefWidth="300"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Carte 4 : Recommandations (cachée jusqu'à sélection) -->
+                <VBox fx:id="recoSection" styleClass="card" spacing="16"
+                      visible="false" managed="false">
+                    <VBox spacing="3">
+                        <Label fx:id="recoTitle" text="Films similaires" styleClass="reco-title"/>
+                        <Label text="Basé sur la similarité des genres" styleClass="reco-subtitle"/>
+                    </VBox>
+                    <VBox fx:id="recoContainer" spacing="10"/>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

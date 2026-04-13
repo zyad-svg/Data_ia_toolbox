@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.toolbox.module6.Module6Controller"
-      styleClass="module-placeholder"
-      alignment="CENTER" spacing="12">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toolbox.module6.Module6Controller"
+            style="-fx-background-color: #F4F5F7;">
 
-    <Label text="Module 6" styleClass="module-title" />
-    <Label text="Zyad" styleClass="module-subtitle" />
+    <top>
+        <VBox spacing="4">
+            <padding><Insets top="24" right="24" bottom="16" left="24"/></padding>
+            <Label text="Module 6" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1A202C;"/>
+            <Label text="En cours de développement" style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+        </VBox>
+    </top>
 
-</VBox>
+    <center>
+        <StackPane fx:id="contentArea">
+            <VBox alignment="CENTER" spacing="16" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 10, 0, 0, 2); -fx-padding: 48;">
+                <Label text="🚧" style="-fx-font-size: 48px;"/>
+                <Label text="Ce module est en cours de développement"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1A202C;"/>
+                <Label text="Revenez bientôt !"
+                       style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+                <StackPane.margin>
+                    <Insets top="24" right="24" bottom="24" left="24"/>
+                </StackPane.margin>
+            </VBox>
+        </StackPane>
+    </center>
+
+</BorderPane>

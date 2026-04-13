@@ -1,74 +1,77 @@
-/* ===== Global ===== */
+/* ===== Layout principal ===== */
 .root-pane {
-    -fx-background-color: #1a1a2e;
+    -fx-background-color: #F4F5F7;
 }
 
 /* ===== Sidebar ===== */
 .sidebar {
-    -fx-background-color: #16213e;
+    -fx-background-color: #FFFFFF;
     -fx-padding: 20 12 20 12;
     -fx-pref-width: 200px;
     -fx-min-width: 180px;
-    -fx-border-color: #6B21A8;
-    -fx-border-width: 0 2 0 0;
+    -fx-border-color: transparent #E5E7EB transparent transparent;
+    -fx-border-width: 0 1 0 0;
 }
 
 .sidebar-title {
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: #1A202C;
     -fx-font-size: 13px;
     -fx-font-weight: bold;
     -fx-wrap-text: true;
     -fx-padding: 0 0 16 4;
 }
 
-/* ===== Nav buttons ===== */
+/* ===== Boutons navigation ===== */
 .nav-btn {
     -fx-background-color: transparent;
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: #1A202C;
     -fx-font-size: 14px;
     -fx-alignment: CENTER-LEFT;
-    -fx-padding: 10 12 10 12;
+    -fx-padding: 10 16 10 16;
     -fx-cursor: hand;
     -fx-background-radius: 6;
     -fx-border-radius: 6;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
 }
 
 .nav-btn:hover {
-    -fx-background-color: #2d1b69;
-    -fx-text-fill: #e2e8f0;
+    -fx-background-color: #F4F5F7;
+    -fx-text-fill: #1A202C;
 }
 
 .nav-active {
-    -fx-background-color: #6B21A8;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #1E3A5F;
+    -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
 }
 
 .nav-active:hover {
-    -fx-background-color: #7c3aed;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #16304F;
+    -fx-text-fill: #FFFFFF;
 }
 
-/* ===== Content area ===== */
+/* ===== Zone centrale ===== */
 .content-area {
-    -fx-background-color: #0f0f1a;
+    -fx-background-color: #F4F5F7;
     -fx-padding: 24;
 }
 
-/* ===== Module placeholder ===== */
+/* ===== Placeholders modules 1, 2, 5, 6 ===== */
 .module-placeholder {
-    -fx-background-color: #1e1e3a;
+    -fx-background-color: #FFFFFF;
     -fx-background-radius: 10;
     -fx-padding: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0, 0, 2);
 }
 
 .module-title {
-    -fx-text-fill: #e2e8f0;
+    -fx-text-fill: #1A202C;
     -fx-font-size: 22px;
     -fx-font-weight: bold;
 }
 
 .module-subtitle {
-    -fx-text-fill: #6B21A8;
+    -fx-text-fill: #6B7280;
     -fx-font-size: 14px;
 }

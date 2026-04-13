@@ -1,4 +1,5 @@
 package com.toolbox.module5;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -6,10 +7,18 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 public class Module5Controller {
+
+    @FXML private StackPane container;
+
+    @FXML
+    public void initialize() {
+        container.getChildren().add(getView());
+    }
 
     private String[] board = new String[9];
     private Button[] buttons = new Button[9];

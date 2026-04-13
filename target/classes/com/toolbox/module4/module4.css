@@ -1,0 +1,124 @@
+/* ===== Module 4 - Support Client ===== */
+
+.root-bg {
+    -fx-background-color: #F4F5F7;
+}
+
+/* ===== Typographie ===== */
+.page-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A202C;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: #6B7280;
+}
+
+/* ===== Boutons ===== */
+.primary-button {
+    -fx-background-color: #1E3A5F;
+    -fx-text-fill: white;
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 20px;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.primary-button:hover {
+    -fx-background-color: #16304F;
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1E3A5F;
+    -fx-border-color: #1E3A5F;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #EBF0F7;
+}
+
+/* ===== Carte ===== */
+.card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-padding: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+
+/* ===== Champ de saisie ===== */
+.input-field {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 8px 12px;
+    -fx-text-fill: #1A202C;
+    -fx-prompt-text-fill: #9CA3AF;
+    -fx-font-size: 13px;
+}
+
+.input-field:focused {
+    -fx-border-color: #1E3A5F;
+}
+
+/* ===== Bulles de chat ===== */
+.chat-bubble-user {
+    -fx-background-color: #1E3A5F;
+    -fx-text-fill: white;
+    -fx-background-radius: 12px 12px 2px 12px;
+    -fx-padding: 10px 14px;
+    -fx-font-size: 13px;
+    -fx-wrap-text: true;
+}
+
+.chat-bubble-bot {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #1A202C;
+    -fx-border-color: #E5E7EB;
+    -fx-border-width: 1px;
+    -fx-border-radius: 12px 12px 12px 2px;
+    -fx-background-radius: 12px 12px 12px 2px;
+    -fx-padding: 10px 14px;
+    -fx-font-size: 13px;
+    -fx-wrap-text: true;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 4, 0, 0, 1);
+}
+
+/* ===== Tableau questions sans réponse ===== */
+.data-table {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 6px;
+}
+
+.data-table .column-header {
+    -fx-background-color: #F4F5F7;
+    -fx-text-fill: #1A202C;
+    -fx-font-weight: bold;
+}
+
+.data-table .table-row-cell:selected {
+    -fx-background-color: #EBF0F7;
+    -fx-text-fill: #1A202C;
+}
+
+/* ===== ScrollPane ===== */
+.chat-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.chat-scroll .viewport {
+    -fx-background-color: transparent;
+}
