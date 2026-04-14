@@ -1,15 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.toolbox.module1.Module1Controller"
-      styleClass="module-placeholder"
-      alignment="CENTER" spacing="12">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toolbox.module1.Module1Controller"
+            styleClass="root-bg">
 
-    <Label text="Module 1" styleClass="module-title" />
-    <Label text="Enzo" styleClass="module-subtitle" />
+    <stylesheets>
+        <String fx:value="/com/toolbox/module1/module1.css"/>
+    </stylesheets>
 
-</VBox>
+    <top>
+        <VBox spacing="4">
+            <padding><Insets top="24" right="24" bottom="16" left="24"/></padding>
+            <Label text="Analyseur de Texte" styleClass="page-title"/>
+            <Label text="Statistiques et analyse de sentiment" styleClass="section-title"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <HBox spacing="20">
+                <padding><Insets top="0" right="24" bottom="24" left="24"/></padding>
+
+                <!-- COLONNE GAUCHE -->
+                <VBox spacing="20" HBox.hgrow="ALWAYS" prefWidth="500">
+
+                    <VBox styleClass="card" spacing="12">
+                        <Label text="SAISIE DU TEXTE" styleClass="section-title"/>
+                        <TextArea fx:id="inputText"
+                                  styleClass="input-field"
+                                  promptText="Collez ou saisissez votre texte ici..."
+                                  wrapText="true"
+                                  minHeight="300"/>
+                        <HBox spacing="12">
+                            <Button text="Analyser" styleClass="primary-button" onAction="#onAnalyze"/>
+                            <Button text="Charger un fichier" styleClass="secondary-button" onAction="#onLoadFile"/>
+                        </HBox>
+                    </VBox>
+
+                    <VBox styleClass="card" spacing="12">
+                        <Label text="STATISTIQUES GENERALES" styleClass="section-title"/>
+                        <HBox spacing="16">
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label fx:id="wordCountLbl" text="0" styleClass="stat-value"/>
+                                <Label text="Nombre de mots" styleClass="stat-label"/>
+                            </VBox>
+                            <Separator orientation="VERTICAL"/>
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label fx:id="sentenceCountLbl" text="0" styleClass="stat-value"/>
+                                <Label text="Nombre de phrases" styleClass="stat-label"/>
+                            </VBox>
+                            <Separator orientation="VERTICAL"/>
+                            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                                <Label fx:id="charCountLbl" text="0" styleClass="stat-value"/>
+                                <Label text="Nombre de caracteres" styleClass="stat-label"/>
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </VBox>
+
+                <!-- COLONNE DROITE -->
+                <VBox spacing="20" HBox.hgrow="ALWAYS" prefWidth="440">
+
+                    <VBox styleClass="card" spacing="12">
+                        <Label text="SCORE DE SENTIMENT" styleClass="section-title"/>
+                        <HBox alignment="CENTER_LEFT" spacing="16">
+                            <Label fx:id="sentimentEmoji" text=":|" styleClass="sentiment-emoji"/>
+                            <VBox spacing="2">
+                                <Label fx:id="scoreLbl" text="50/100" styleClass="score-big"/>
+                                <Label fx:id="sentimentLabel" text="Texte neutre"
+                                       style="-fx-text-fill: #F59E0B; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+                            </VBox>
+                        </HBox>
+                        <ProgressBar fx:id="sentimentBar" progress="0.5" maxWidth="Infinity"/>
+                        <Label fx:id="sentimentDetail" text="0 mots positifs, 0 mots negatifs"
+                               style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                    </VBox>
+
+                    <VBox styleClass="card" spacing="12">
+                        <Label text="MOTS-CLES DETECTES" styleClass="section-title"/>
+                        <TableView fx:id="topWordsTable" styleClass="data-table" minHeight="260">
+                            <columns>
+                                <TableColumn fx:id="colWord"  text="MOT"         prefWidth="260"/>
+                                <TableColumn fx:id="colCount" text="OCCURRENCES" prefWidth="140"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                    <VBox styleClass="card" spacing="10">
+                        <Label text="FREQUENCE DES LETTRES" styleClass="section-title"/>
+                        <VBox fx:id="letterContainer" spacing="6"/>
+                    </VBox>
+
+                </VBox>
+            </HBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

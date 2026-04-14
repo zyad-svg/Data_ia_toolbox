@@ -9,11 +9,14 @@ com/toolbox/module6/Module6Controller$1.class
 com/toolbox/module3/Module3Controller.class
 com/toolbox/module1/Module1Controller.class
 com/toolbox/module5/GameDao.class
+com/toolbox/module1/Module1Controller$WordRow.class
 com/toolbox/module3/Module3Controller$1.class
 com/toolbox/module6/Module6Controller$ProfileRow.class
 com/toolbox/module4/Module4Knowledge.class
+com/toolbox/module2/Module2Controller$1.class
 com/toolbox/module5/Module5Controller.class
 com/toolbox/module2/Module2Controller.class
+com/toolbox/module2/Module2Controller$MeteoData.class
 com/toolbox/module6/Module6Controller.class
 com/toolbox/MainApp.class
 com/toolbox/module4/Module4Controller$UnansweredRow.class

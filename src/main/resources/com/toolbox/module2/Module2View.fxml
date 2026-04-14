@@ -1,15 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.toolbox.module2.Module2Controller"
-      styleClass="module-placeholder"
-      alignment="CENTER" spacing="12">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.toolbox.module2.Module2Controller"
+            styleClass="root-bg">
 
-    <Label text="Module 2" styleClass="module-title" />
-    <Label text="Enzo" styleClass="module-subtitle" />
+    <stylesheets>
+        <String fx:value="/com/toolbox/module2/module2.css"/>
+    </stylesheets>
 
-</VBox>
+    <top>
+        <VBox spacing="4">
+            <padding><Insets top="24" right="24" bottom="16" left="24"/></padding>
+            <Label text="Visualisateur Meteo" styleClass="page-title"/>
+            <Label text="Analyse de donnees historiques" styleClass="section-title"/>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox spacing="20">
+                <padding><Insets top="0" right="24" bottom="24" left="24"/></padding>
+
+                <!-- Carte boutons -->
+                <VBox styleClass="card" spacing="12">
+                    <Label text="SOURCE DES DONNEES" styleClass="section-title"/>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Button text="Charger CSV meteo" styleClass="primary-button" onAction="#onLoadCSV"/>
+                        <Button text="Utiliser donnees de demonstration" styleClass="secondary-button" onAction="#onDemo"/>
+                        <Label fx:id="statusLbl" text="" style="-fx-text-fill: #6B7280; -fx-font-size: 13px;"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Carte stats -->
+                <VBox styleClass="card" spacing="12">
+                    <Label text="STATISTIQUES CALCULEES" styleClass="section-title"/>
+                    <HBox spacing="16">
+                        <!-- Temperature -->
+                        <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="stat-block">
+                            <Label text="TEMPERATURE" styleClass="stat-block-title"/>
+                            <HBox spacing="16">
+                                <VBox spacing="2"><Label fx:id="tempAvg" text="0" styleClass="stat-value"/><Label text="Moyenne" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="tempMin" text="0" styleClass="stat-value"/><Label text="Min" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="tempMax" text="0" styleClass="stat-value"/><Label text="Max" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="tempStd" text="0" styleClass="stat-value"/><Label text="Ecart-type" styleClass="stat-label"/></VBox>
+                            </HBox>
+                        </VBox>
+                        <Separator orientation="VERTICAL"/>
+                        <!-- Humidite -->
+                        <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="stat-block">
+                            <Label text="HUMIDITE" styleClass="stat-block-title"/>
+                            <HBox spacing="16">
+                                <VBox spacing="2"><Label fx:id="humAvg" text="0" styleClass="stat-value"/><Label text="Moyenne" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="humMin" text="0" styleClass="stat-value"/><Label text="Min" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="humMax" text="0" styleClass="stat-value"/><Label text="Max" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="humStd" text="0" styleClass="stat-value"/><Label text="Ecart-type" styleClass="stat-label"/></VBox>
+                            </HBox>
+                        </VBox>
+                        <Separator orientation="VERTICAL"/>
+                        <!-- Vent -->
+                        <VBox spacing="8" HBox.hgrow="ALWAYS" styleClass="stat-block">
+                            <Label text="VENT" styleClass="stat-block-title"/>
+                            <HBox spacing="16">
+                                <VBox spacing="2"><Label fx:id="windAvg" text="0" styleClass="stat-value"/><Label text="Moyenne" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="windMin" text="0" styleClass="stat-value"/><Label text="Min" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="windMax" text="0" styleClass="stat-value"/><Label text="Max" styleClass="stat-label"/></VBox>
+                                <VBox spacing="2"><Label fx:id="windStd" text="0" styleClass="stat-value"/><Label text="Ecart-type" styleClass="stat-label"/></VBox>
+                            </HBox>
+                        </VBox>
+                        <Separator orientation="VERTICAL"/>
+                        <!-- Anomalies -->
+                        <VBox spacing="8" alignment="CENTER" styleClass="stat-block">
+                            <Label text="ANOMALIES" styleClass="stat-block-title"/>
+                            <Label fx:id="anomalyCount" text="0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1E3A5F;"/>
+                            <Label text="detectees" styleClass="stat-label"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Carte donnees -->
+                <VBox styleClass="card" spacing="12">
+                    <Label text="DONNEES DETAILLEES" styleClass="section-title"/>
+                    <TableView fx:id="meteoTable" styleClass="data-table" minHeight="320">
+                        <columns>
+                            <TableColumn fx:id="colDate" text="DATE"            prefWidth="120"/>
+                            <TableColumn fx:id="colTemp" text="TEMPERATURE (C)" prefWidth="130"/>
+                            <TableColumn fx:id="colHum"  text="HUMIDITE (%)"    prefWidth="120"/>
+                            <TableColumn fx:id="colWind" text="VENT (km/h)"     prefWidth="120"/>
+                            <TableColumn fx:id="colDesc" text="DESCRIPTION"     prefWidth="160"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Carte legende -->
+                <VBox styleClass="card" spacing="8">
+                    <Label text="LEGENDE" styleClass="section-title"/>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="  " style="-fx-background-color: #FEE2E2; -fx-min-width: 24; -fx-min-height: 14; -fx-border-color: #DC2626; -fx-border-width: 1;"/>
+                        <Label text="Anomalie detectee (ecart &gt; 2 sigma de la moyenne)"
+                               style="-fx-font-size: 12px; -fx-text-fill: #DC2626;"/>
+                    </HBox>
+                    <HBox spacing="8" alignment="CENTER_LEFT">
+                        <Label text="  " style="-fx-background-color: #FFFFFF; -fx-min-width: 24; -fx-min-height: 14; -fx-border-color: #E5E7EB; -fx-border-width: 1;"/>
+                        <Label text="Donnees dans la plage normale"
+                               style="-fx-font-size: 12px; -fx-text-fill: #6B7280;"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

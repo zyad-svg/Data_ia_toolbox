@@ -16,17 +16,17 @@
         <VBox styleClass="sidebar" spacing="4">
             <Label text="Data &amp; IA Toolbox" styleClass="sidebar-title" />
 
-            <Button fx:id="btn1" text="Module 1" styleClass="nav-btn" maxWidth="Infinity"
+            <Button fx:id="btn1" text="Analyseur de Texte" styleClass="nav-btn" maxWidth="Infinity"
                     onAction="#onModule1" />
-            <Button fx:id="btn2" text="Module 2" styleClass="nav-btn" maxWidth="Infinity"
+            <Button fx:id="btn2" text="Données Météo" styleClass="nav-btn" maxWidth="Infinity"
                     onAction="#onModule2" />
-            <Button fx:id="btn3" text="Module 3" styleClass="nav-btn" maxWidth="Infinity"
+            <Button fx:id="btn3" text="Recommandation Films" styleClass="nav-btn" maxWidth="Infinity"
                     onAction="#onModule3" />
-            <Button fx:id="btn4" text="Module 4" styleClass="nav-btn" maxWidth="Infinity"
+            <Button fx:id="btn4" text="Support Client" styleClass="nav-btn" maxWidth="Infinity"
                     onAction="#onModule4" />
-            <Button fx:id="btn5" text="Module 5" styleClass="nav-btn" maxWidth="Infinity"
+            <Button fx:id="btn5" text="Tic-Tac-Toe" styleClass="nav-btn" maxWidth="Infinity"
                     onAction="#onModule5" />
-            <Button fx:id="btn6" text="Module 6" styleClass="nav-btn" maxWidth="Infinity"
+            <Button fx:id="btn6" text="Prédicteur de Risque" styleClass="nav-btn" maxWidth="Infinity"
                     onAction="#onModule6" />
         </VBox>
     </left>
