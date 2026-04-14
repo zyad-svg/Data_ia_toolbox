@@ -1,0 +1,166 @@
+/* ===== Module 6 - Predicteur de Risque ===== */
+
+.root-bg { -fx-background-color: #F4F5F7; }
+
+/* ===== Typographie ===== */
+.page-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A202C;
+}
+
+.section-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6B7280;
+}
+
+.field-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #1A202C;
+}
+
+.field-value {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1E3A5F;
+}
+
+/* ===== Carte ===== */
+.card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 10, 0, 0, 2);
+}
+
+/* ===== Boutons ===== */
+.primary-button {
+    -fx-background-color: #1E3A5F;
+    -fx-text-fill: white;
+    -fx-background-radius: 6px;
+    -fx-padding: 10 22;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+.primary-button:hover { -fx-background-color: #16304F; }
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1E3A5F;
+    -fx-border-color: #1E3A5F;
+    -fx-border-width: 1px;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+.secondary-button:hover { -fx-background-color: #EBF0F7; }
+
+/* ===== ComboBox ===== */
+.combo-box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-font-size: 13px;
+}
+
+/* ===== Slider ===== */
+.slider .track {
+    -fx-background-color: #E5E7EB;
+    -fx-background-radius: 4;
+    -fx-pref-height: 6;
+}
+.slider .thumb {
+    -fx-background-color: #1E3A5F;
+    -fx-background-radius: 10;
+    -fx-pref-width: 18;
+    -fx-pref-height: 18;
+}
+
+/* ===== Resultat ===== */
+.score-big {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A202C;
+}
+
+.decision-message {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6B7280;
+    -fx-font-style: italic;
+}
+
+.detail-line {
+    -fx-font-size: 12px;
+    -fx-text-fill: #4B5563;
+}
+
+/* ===== ProgressBar gauge ===== */
+.progress-bar {
+    -fx-pref-height: 14;
+}
+.progress-bar > .track {
+    -fx-background-color: #F1F5F9;
+    -fx-background-radius: 7;
+    -fx-background-insets: 0;
+}
+.progress-bar > .bar {
+    -fx-background-radius: 7;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.gauge-accepted > .bar { -fx-background-color: #22C55E; }
+.gauge-review   > .bar { -fx-background-color: #F59E0B; }
+.gauge-risky    > .bar { -fx-background-color: #EF4444; }
+.gauge-refused  > .bar { -fx-background-color: #DC2626; }
+
+/* ===== Decision badge ===== */
+.decision-badge {
+    -fx-background-radius: 20px;
+    -fx-padding: 6 18;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+.badge-green     { -fx-background-color: #22C55E; }
+.badge-orange    { -fx-background-color: #F59E0B; }
+.badge-red-light { -fx-background-color: #EF4444; }
+.badge-red       { -fx-background-color: #DC2626; }
+
+/* ===== Table ===== */
+.data-table {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E5E7EB;
+    -fx-border-radius: 6px;
+    -fx-table-cell-border-color: transparent;
+}
+.data-table .column-header-background { -fx-background-color: #F8FAFC; }
+.data-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #E5E7EB transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 12 10 12;
+}
+.data-table .column-header .label {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+.data-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent;
+}
+.data-table .table-row-cell:odd   { -fx-background-color: #FAFAFA; }
+.data-table .table-row-cell:hover { -fx-background-color: #EFF6FF; }
+.data-table .table-cell {
+    -fx-padding: 0 12 0 12;
+    -fx-text-fill: #1A202C;
+    -fx-font-size: 12px;
+}

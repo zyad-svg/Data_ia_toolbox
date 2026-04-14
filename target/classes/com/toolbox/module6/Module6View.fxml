@@ -1,37 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.toolbox.module6.Module6Controller"
-            style="-fx-background-color: #F4F5F7;">
+            styleClass="root-bg">
+
+    <stylesheets>
+        <String fx:value="/com/toolbox/module6/module6.css"/>
+    </stylesheets>
 
     <top>
         <VBox spacing="4">
             <padding><Insets top="24" right="24" bottom="16" left="24"/></padding>
-            <Label text="Module 6" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #1A202C;"/>
-            <Label text="En cours de développement" style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
+            <Label text="Predicteur de Risque" styleClass="page-title"/>
+            <Label text="Simulation d'acceptation de pret" styleClass="section-title"/>
         </VBox>
     </top>
 
     <center>
-        <StackPane fx:id="contentArea">
-            <VBox alignment="CENTER" spacing="16" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 10, 0, 0, 2); -fx-padding: 48;">
-                <Label text="🚧" style="-fx-font-size: 48px;"/>
-                <Label text="Ce module est en cours de développement"
-                       style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1A202C;"/>
-                <Label text="Revenez bientôt !"
-                       style="-fx-font-size: 13px; -fx-text-fill: #6B7280;"/>
-                <StackPane.margin>
-                    <Insets top="24" right="24" bottom="24" left="24"/>
-                </StackPane.margin>
-            </VBox>
-        </StackPane>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <HBox spacing="20">
+                <padding><Insets top="0" right="24" bottom="24" left="24"/></padding>
+
+                <!-- ===== COLONNE GAUCHE : FORMULAIRE ===== -->
+                <VBox styleClass="card" spacing="18" HBox.hgrow="ALWAYS" prefWidth="420">
+                    <Label text="PARAMETRES DU PROFIL" styleClass="section-title"/>
+
+                    <VBox spacing="6">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Age" styleClass="field-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="ageValueLbl" text="30 ans" styleClass="field-value"/>
+                        </HBox>
+                        <Slider fx:id="ageSlider" min="18" max="80" value="30"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Revenus mensuels" styleClass="field-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="revenusValueLbl" text="2500 EUR/mois" styleClass="field-value"/>
+                        </HBox>
+                        <Slider fx:id="revenusSlider" min="0" max="10000" value="2500"
+                                blockIncrement="100" majorTickUnit="2000"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Charges mensuelles" styleClass="field-label"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="chargesValueLbl" text="800 EUR/mois" styleClass="field-value"/>
+                        </HBox>
+                        <Slider fx:id="chargesSlider" min="0" max="5000" value="800"
+                                blockIncrement="50" majorTickUnit="1000"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Situation professionnelle" styleClass="field-label"/>
+                        <ComboBox fx:id="situationCombo" maxWidth="Infinity"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Historique credit" styleClass="field-label"/>
+                        <ComboBox fx:id="historyCombo" maxWidth="Infinity"/>
+                    </VBox>
+
+                    <HBox spacing="10">
+                        <Button text="Calculer le score" styleClass="primary-button" onAction="#onCalculate"/>
+                        <Button text="Sauvegarder le profil" styleClass="secondary-button" onAction="#onSave"/>
+                    </HBox>
+                </VBox>
+
+                <!-- ===== COLONNE DROITE : RESULTATS + SCOREBOARD ===== -->
+                <VBox spacing="20" HBox.hgrow="ALWAYS" prefWidth="480">
+
+                    <!-- Carte Resultat -->
+                    <VBox styleClass="card" spacing="14">
+                        <Label text="RESULTAT" styleClass="section-title"/>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12">
+                            <Label fx:id="scoreLabel" text="0/100" styleClass="score-big"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label fx:id="decisionBadge" text="--" styleClass="decision-badge"/>
+                        </HBox>
+
+                        <ProgressBar fx:id="scoreBar" progress="0" maxWidth="Infinity"/>
+
+                        <Label fx:id="decisionMessage" text="" styleClass="decision-message" wrapText="true"/>
+
+                        <Separator/>
+
+                        <Label text="DETAIL DES POINTS" styleClass="section-title"/>
+                        <VBox fx:id="detailsContainer" spacing="4"/>
+                    </VBox>
+
+                    <!-- Carte Scoreboard -->
+                    <VBox styleClass="card" spacing="10">
+                        <Label text="SCOREBOARD - 10 DERNIERS PROFILS" styleClass="section-title"/>
+                        <TableView fx:id="historyTable" styleClass="data-table" minHeight="240">
+                            <columns>
+                                <TableColumn fx:id="colAge"      text="AGE"      prefWidth="70"/>
+                                <TableColumn fx:id="colRevenus"  text="REVENUS"  prefWidth="90"/>
+                                <TableColumn fx:id="colScore"    text="SCORE"    prefWidth="80"/>
+                                <TableColumn fx:id="colDecision" text="DECISION" prefWidth="100"/>
+                                <TableColumn fx:id="colDate"     text="DATE"     prefWidth="130"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+
+                </VBox>
+            </HBox>
+        </ScrollPane>
     </center>
 
 </BorderPane>
